@@ -53,14 +53,28 @@ __webpack_require__.r(__webpack_exports__);
 const GenerateColor = __webpack_require__(/*! ../JSsrc/ColorGenerator */ "./JSsrc/ColorGenerator.js").ColorGenerator;
 
 function App() {
+  const [colors, setColors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const args = {
     dimensions: {
       width: 1920,
       height: 933
     }
   };
-  const test = new GenerateColor(args).constructColor();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    setColors(new GenerateColor(args).constructColor());
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Hello"), colors === null || colors === void 0 ? void 0 : colors.map(({
+    red,
+    green,
+    blue
+  }) => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      style: {
+        backgroundColor: `rgba(${red}, ${green},${blue}, 1)`,
+        height: "100px"
+      }
+    });
+  }));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);

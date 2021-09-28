@@ -1,12 +1,7 @@
+import {Color} from './GeneralTypes'
 interface CanvasDimensionsMeasur {
   width: number;
   height: number;
-}
-
-interface Color {
-  red: number;
-  green: number;
-  blue: number;
 }
 
 interface Props {
@@ -35,7 +30,7 @@ export class ColorGenerator {
         }
       }
     }
-    return this.color;
+    return {...this.color};
   };
 }
 
