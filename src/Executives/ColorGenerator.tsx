@@ -1,4 +1,4 @@
-import {Color} from './GeneralTypes'
+import {Color} from '../Types/GeneralTypes'
 interface CanvasDimensionsMeasur {
   width: number;
   height: number;
