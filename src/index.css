@@ -8,13 +8,15 @@ body {
 }
 
 .container {
+    width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
 }
 
-.container_color-box {
-  width: 10px;
-  height: 10px;
+.container_colorBox {
+  width: 8px;
+  height: 8px;
 }

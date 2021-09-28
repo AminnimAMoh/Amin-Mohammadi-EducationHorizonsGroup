@@ -2,7 +2,7 @@ import React, {useEffect, useState, lazy} from "react";
 import {Color} from "./Types/GeneralTypes";
 const GenerateColor = require("../JSsrc/ColorGenerator").ColorGenerator;
 
-const ColorBox=lazy(()=>import("./Shared-Components/ColorBox"))
+// const ColorBox=lazy(()=>import("./Shared-Components/ColorBox"))
 
 function App(): React.ReactElement {
   const [colors, setColors]=useState<Color[] | null>(null);
@@ -18,9 +18,10 @@ function App(): React.ReactElement {
   
   return (
     <div className="container">
-      <h1>Hello</h1>
-      {colors?.map((colors: Color, index)=>{
-        return <ColorBox key={index} {...colors}/>
+      {colors?.map((color: Color, index)=>{
+        return <span key={index} className="container_colorBox" style={{backgroundColor: `rgba(${color.red}, ${color.green}, ${color.blue}, 1)`}}/>
+        // return <ColorBox key={index} {...colors}/>
+        // return <div key={index} style={{backgroundColor: `rgba(${color.red}, ${color.green}, ${color.blue}, 1)`}} />
       })}
     </div>
   );
