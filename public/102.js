@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhappybirthday=self.webpackChunkhappybirthday||[]).push([[102],{102:(e,t,l)=>{l.r(t),l.d(t,{default:()=>n});var a=l(7294);const n=function(){return a.createElement("div",null,a.createElement("h1",null,"Hello"))}}}]);
