@@ -1,6 +1,43 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./JSsrc/ColorGenerator.js":
+/*!*********************************!*\
+  !*** ./JSsrc/ColorGenerator.js ***!
+  \*********************************/
+/***/ ((module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ColorGenerator = void 0;
+class ColorGenerator {
+    constructor(props) {
+        this.calculateCellSize = () => {
+            return `size=${this.dimensions.width}x${this.dimensions.height}`;
+        };
+        this.constructColor = () => {
+            const increment = Math.round(255 / 32);
+            for (let r = 0; r < 255; r += increment) {
+                for (let g = 0; g < 255; g += increment) {
+                    for (let b = 0; b < 255; b += increment) {
+                        const color = { red: Math.floor(r), green: g, blue: Math.round(b) };
+                        this.color.push(color);
+                    }
+                }
+            }
+            return this.color;
+        };
+        this.dimensions = props.dimensions;
+        this.color = [];
+    }
+}
+exports.ColorGenerator = ColorGenerator;
+module.exports.ColorGenerator = ColorGenerator;
+//# sourceMappingURL=ColorGenerator.js.map
+
+/***/ }),
+
 /***/ "./node_modules/accepts/index.js":
 /*!***************************************!*\
   !*** ./node_modules/accepts/index.js ***!
@@ -339,9 +376,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
+const GenerateColor = __webpack_require__(/*! ../JSsrc/ColorGenerator */ "./JSsrc/ColorGenerator.js").ColorGenerator;
+
 function App() {
-  // console.clear();
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Hello"));
+  const args = {
+    dimensions: {
+      width: 1920,
+      height: 933
+    }
+  };
+  const test = new GenerateColor(args).constructColor();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -2633,6 +2678,168 @@ function tryDecode(str, decode) {
 
 /***/ }),
 
+/***/ "./node_modules/debug/node_modules/ms/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/debug/node_modules/ms/index.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * Helpers.
+ */
+
+var s = 1000;
+var m = s * 60;
+var h = m * 60;
+var d = h * 24;
+var y = d * 365.25;
+
+/**
+ * Parse or format the given `val`.
+ *
+ * Options:
+ *
+ *  - `long` verbose formatting [false]
+ *
+ * @param {String|Number} val
+ * @param {Object} [options]
+ * @throws {Error} throw an error if val is not a non-empty string or a number
+ * @return {String|Number}
+ * @api public
+ */
+
+module.exports = function(val, options) {
+  options = options || {};
+  var type = typeof val;
+  if (type === 'string' && val.length > 0) {
+    return parse(val);
+  } else if (type === 'number' && isNaN(val) === false) {
+    return options.long ? fmtLong(val) : fmtShort(val);
+  }
+  throw new Error(
+    'val is not a non-empty string or a valid number. val=' +
+      JSON.stringify(val)
+  );
+};
+
+/**
+ * Parse the given `str` and return milliseconds.
+ *
+ * @param {String} str
+ * @return {Number}
+ * @api private
+ */
+
+function parse(str) {
+  str = String(str);
+  if (str.length > 100) {
+    return;
+  }
+  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
+    str
+  );
+  if (!match) {
+    return;
+  }
+  var n = parseFloat(match[1]);
+  var type = (match[2] || 'ms').toLowerCase();
+  switch (type) {
+    case 'years':
+    case 'year':
+    case 'yrs':
+    case 'yr':
+    case 'y':
+      return n * y;
+    case 'days':
+    case 'day':
+    case 'd':
+      return n * d;
+    case 'hours':
+    case 'hour':
+    case 'hrs':
+    case 'hr':
+    case 'h':
+      return n * h;
+    case 'minutes':
+    case 'minute':
+    case 'mins':
+    case 'min':
+    case 'm':
+      return n * m;
+    case 'seconds':
+    case 'second':
+    case 'secs':
+    case 'sec':
+    case 's':
+      return n * s;
+    case 'milliseconds':
+    case 'millisecond':
+    case 'msecs':
+    case 'msec':
+    case 'ms':
+      return n;
+    default:
+      return undefined;
+  }
+}
+
+/**
+ * Short format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtShort(ms) {
+  if (ms >= d) {
+    return Math.round(ms / d) + 'd';
+  }
+  if (ms >= h) {
+    return Math.round(ms / h) + 'h';
+  }
+  if (ms >= m) {
+    return Math.round(ms / m) + 'm';
+  }
+  if (ms >= s) {
+    return Math.round(ms / s) + 's';
+  }
+  return ms + 'ms';
+}
+
+/**
+ * Long format for `ms`.
+ *
+ * @param {Number} ms
+ * @return {String}
+ * @api private
+ */
+
+function fmtLong(ms) {
+  return plural(ms, d, 'day') ||
+    plural(ms, h, 'hour') ||
+    plural(ms, m, 'minute') ||
+    plural(ms, s, 'second') ||
+    ms + ' ms';
+}
+
+/**
+ * Pluralization helper.
+ */
+
+function plural(ms, n, name) {
+  if (ms < n) {
+    return;
+  }
+  if (ms < n * 1.5) {
+    return Math.floor(ms / n) + ' ' + name;
+  }
+  return Math.ceil(ms / n) + ' ' + name + 's';
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/debug/src/browser.js":
 /*!*******************************************!*\
   !*** ./node_modules/debug/src/browser.js ***!
@@ -2847,7 +3054,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(/*! ms */ "./node_modules/ms/index.js");
+exports.humanize = __webpack_require__(/*! ms */ "./node_modules/debug/node_modules/ms/index.js");
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -14017,168 +14224,6 @@ mime.charsets = {
 };
 
 module.exports = mime;
-
-
-/***/ }),
-
-/***/ "./node_modules/ms/index.js":
-/*!**********************************!*\
-  !*** ./node_modules/ms/index.js ***!
-  \**********************************/
-/***/ ((module) => {
-
-/**
- * Helpers.
- */
-
-var s = 1000;
-var m = s * 60;
-var h = m * 60;
-var d = h * 24;
-var y = d * 365.25;
-
-/**
- * Parse or format the given `val`.
- *
- * Options:
- *
- *  - `long` verbose formatting [false]
- *
- * @param {String|Number} val
- * @param {Object} [options]
- * @throws {Error} throw an error if val is not a non-empty string or a number
- * @return {String|Number}
- * @api public
- */
-
-module.exports = function(val, options) {
-  options = options || {};
-  var type = typeof val;
-  if (type === 'string' && val.length > 0) {
-    return parse(val);
-  } else if (type === 'number' && isNaN(val) === false) {
-    return options.long ? fmtLong(val) : fmtShort(val);
-  }
-  throw new Error(
-    'val is not a non-empty string or a valid number. val=' +
-      JSON.stringify(val)
-  );
-};
-
-/**
- * Parse the given `str` and return milliseconds.
- *
- * @param {String} str
- * @return {Number}
- * @api private
- */
-
-function parse(str) {
-  str = String(str);
-  if (str.length > 100) {
-    return;
-  }
-  var match = /^((?:\d+)?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|years?|yrs?|y)?$/i.exec(
-    str
-  );
-  if (!match) {
-    return;
-  }
-  var n = parseFloat(match[1]);
-  var type = (match[2] || 'ms').toLowerCase();
-  switch (type) {
-    case 'years':
-    case 'year':
-    case 'yrs':
-    case 'yr':
-    case 'y':
-      return n * y;
-    case 'days':
-    case 'day':
-    case 'd':
-      return n * d;
-    case 'hours':
-    case 'hour':
-    case 'hrs':
-    case 'hr':
-    case 'h':
-      return n * h;
-    case 'minutes':
-    case 'minute':
-    case 'mins':
-    case 'min':
-    case 'm':
-      return n * m;
-    case 'seconds':
-    case 'second':
-    case 'secs':
-    case 'sec':
-    case 's':
-      return n * s;
-    case 'milliseconds':
-    case 'millisecond':
-    case 'msecs':
-    case 'msec':
-    case 'ms':
-      return n;
-    default:
-      return undefined;
-  }
-}
-
-/**
- * Short format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtShort(ms) {
-  if (ms >= d) {
-    return Math.round(ms / d) + 'd';
-  }
-  if (ms >= h) {
-    return Math.round(ms / h) + 'h';
-  }
-  if (ms >= m) {
-    return Math.round(ms / m) + 'm';
-  }
-  if (ms >= s) {
-    return Math.round(ms / s) + 's';
-  }
-  return ms + 'ms';
-}
-
-/**
- * Long format for `ms`.
- *
- * @param {Number} ms
- * @return {String}
- * @api private
- */
-
-function fmtLong(ms) {
-  return plural(ms, d, 'day') ||
-    plural(ms, h, 'hour') ||
-    plural(ms, m, 'minute') ||
-    plural(ms, s, 'second') ||
-    ms + ' ms';
-}
-
-/**
- * Pluralization helper.
- */
-
-function plural(ms, n, name) {
-  if (ms < n) {
-    return;
-  }
-  if (ms < n * 1.5) {
-    return Math.floor(ms / n) + ' ' + name;
-  }
-  return Math.ceil(ms / n) + ' ' + name + 's';
-}
 
 
 /***/ }),

@@ -1,10 +1,18 @@
 import React from "react";
+const GenerateColor = require("../JSsrc/ColorGenerator").ColorGenerator;
+
 
 function App(): React.ReactElement {
-  // console.clear();
+  const args = {
+    dimensions: {
+      width: 1920,
+      height: 933,
+    },
+  };
+  const test=new GenerateColor(args).constructColor();
+  
   return (
     <div>
-        <h1>Hello</h1 >
     </div>
   );
 }

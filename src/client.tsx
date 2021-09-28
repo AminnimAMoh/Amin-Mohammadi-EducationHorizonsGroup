@@ -9,8 +9,5 @@ ReactDOM.hydrate(
   <Suspense fallback={"Loading..."}>
       <App />
   </Suspense>,
-  document.getElementById("root"),
-  () => {
-    document.getElementById("jss-server-side")?.remove();
-  }
+  document.getElementById("root")
 );
