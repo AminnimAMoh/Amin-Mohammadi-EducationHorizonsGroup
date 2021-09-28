@@ -69,6 +69,7 @@ function App() {
     blue
   }) => {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: "container_color-box",
       style: {
         backgroundColor: `rgba(${red}, ${green},${blue}, 1)`,
         height: "100px"

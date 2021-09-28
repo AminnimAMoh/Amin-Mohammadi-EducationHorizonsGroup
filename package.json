@@ -61,6 +61,7 @@
     "nodemon": "^2.0.12",
     "postcss": "^8.3.6",
     "reload": "^3.2.0",
+    "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "to-string-loader": "^1.1.6",
     "ts-loader": "^9.2.5",

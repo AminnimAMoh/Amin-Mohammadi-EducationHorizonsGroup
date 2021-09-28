@@ -19,7 +19,7 @@ function App(): React.ReactElement {
     <div>
       <h1>Hello</h1>
       {colors?.map(({red, green, blue}: any)=>{
-        return <div style={{backgroundColor: `rgba(${red}, ${green},${blue}, 1)`, height: "100px"}}/>
+        return <div className="container_color-box" style={{backgroundColor: `rgba(${red}, ${green},${blue}, 1)`, height: "100px"}}/>
       })}
     </div>
   );

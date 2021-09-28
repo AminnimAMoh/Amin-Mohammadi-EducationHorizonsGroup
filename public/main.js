@@ -1250,7 +1250,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nbody{\r\n    width: 100vw;\r\n    height: 100vh;\r\n}", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;AACd;AACA;IACI,YAAY;IACZ,aAAa;AACjB","sourcesContent":["*{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nbody{\r\n    width: 100vw;\r\n    height: 100vh;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nbody{\r\n    width: 100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.container{\r\ndisplay: flex;\r\njustify-content: flex-start;\r\nalign-items: flex-start;\r\n\r\n\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,UAAU;AACd;AACA;IACI,YAAY;IACZ,aAAa;AACjB;;AAEA;AACA,aAAa;AACb,2BAA2B;AAC3B,uBAAuB;;;AAGvB","sourcesContent":["*{\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nbody{\r\n    width: 100vw;\r\n    height: 100vh;\r\n}\r\n\r\n.container{\r\ndisplay: flex;\r\njustify-content: flex-start;\r\nalign-items: flex-start;\r\n\r\n\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
