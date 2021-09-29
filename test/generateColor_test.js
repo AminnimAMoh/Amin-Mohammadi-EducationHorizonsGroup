@@ -1,15 +1,9 @@
 const expect = require("chai").expect;
-const GenerateColor = require("../JSsrc/ColorGenerator").ColorGenerator;
+const GenerateColor = require("../JSsrc/Executives/GenerateColors").generateColors;
 const calculateCellSize = require("../JSsrc/Executives/CalculateBoxSize").calculateBoxSize;
 
 describe("GenerateColor>constructColor", () => {
-  const args = {
-    dimensions: {
-      width: 1920,
-      height: 933,
-    },
-  };
-  const testObject = new GenerateColor(args).constructColor();
+  const testObject = GenerateColor();
   it("Should correctly report return array length is 32768 from generateColor class constructor function.", () => {
     expect(testObject.length).to.be.equal(32768);
   });
@@ -36,11 +30,14 @@ describe("GenerateColor>constructColor", () => {
 
 describe("Calculate Box Size", () => {
   const args = {
-      width:1920,
-      height: 933,
+      width:256,
+      height: 128,
       cellNumber: 32768
   };
-  it("Should correctly report function return is 0.058 for 1920px width and 0.0284 for 933px height", () => {
+  it("Should correctly report function return is not 0.058 for 256px width and 0.0 for 128px height", () => {
     expect(calculateCellSize(args)).to.not.be.equal({width: 0.058, height: 0.0284});
+  });
+  it("Should correctly report function return is 0.390625 for 256px width and 0.1953125 for 128px height", () => {
+    expect(calculateCellSize(args)).to.be.equal({width: 0.390625, height: 0.1953125});
   });
 });

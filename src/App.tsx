@@ -1,7 +1,7 @@
 import React, { useEffect, useState, lazy, useRef } from "react";
 import { Color } from "./Types/GeneralTypes";
-const GenerateColor = require("../JSsrc/ColorGenerator").ColorGenerator;
-const calculateBoxSize = require("./Executives/CalculateBoxSize").calculateBoxSize;
+import {generateColors} from "./Executives/GenerateColors"
+import {calculateBoxSize} from "./Executives/CalculateBoxSize"
 
 const ColorBox = lazy(() => import("./Shared-Components/ColorBox"));
 
@@ -17,17 +17,11 @@ function App(): React.ReactElement {
     height: 0,
   });
   const containerQuery = useRef<HTMLDivElement>(null);
-  const args = {
-    dimensions: {
-      width: 1920,
-      height: 933,
-    },
-  };
 
   // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
   // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
   useEffect(() => {
-    setColors(new GenerateColor(args).constructColor());
+    setColors(generateColors());
   }, []);
 
   useEffect(() => {
@@ -37,8 +31,7 @@ function App(): React.ReactElement {
       canvasWidth = containerQuery.current.clientWidth;
       canvasHeight = containerQuery.current.clientHeight;
     }
-    console.log(canvasWidth, canvasHeight);
-    
+
     const args = {
       width: canvasWidth,
       height: canvasHeight,
