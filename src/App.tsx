@@ -2,6 +2,7 @@ import React, { useEffect, useState, lazy, useRef } from "react";
 import { Color } from "./Types/GeneralTypes";
 import {generateColors} from "./Executives/GenerateColors"
 import {calculateBoxSize} from "./Executives/CalculateBoxSize"
+import { sortColorsArray } from "./Executives/SortColorArray";
 
 const ColorBox = lazy(() => import("./Shared-Components/ColorBox"));
 
@@ -12,6 +13,7 @@ interface CanvasDimantions {
 
 function App(): React.ReactElement {
   const [colors, setColors] = useState<Color[] | null>(null);
+  const [sortedColors, setSortedColors] = useState<Color[] | null>(null);
   const [canvasSize, setCanvasSize] = useState<CanvasDimantions>({
     width: 0,
     height: 0,
@@ -22,6 +24,7 @@ function App(): React.ReactElement {
   // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
   useEffect(() => {
     setColors(generateColors());
+    if(colors) setSortedColors(sortColorsArray(colors))
   }, []);
 
   useEffect(() => {
@@ -43,7 +46,7 @@ function App(): React.ReactElement {
   return (
     <div className="container" ref={containerQuery}>
       {canvasSize.width && (
-      colors?.map((color: Color, index) => {
+      sortedColors?.map((color: Color, index) => {
         const props = { ...color, ...canvasSize };
         return <ColorBox key={index} {...props} />;
       }))}

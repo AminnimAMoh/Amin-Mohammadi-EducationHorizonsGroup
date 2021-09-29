@@ -21,12 +21,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 require("@babel/polyfill");
-var react_1 = __importStar(require("react"));
-var react_dom_1 = __importDefault(require("react-dom"));
+const react_1 = __importStar(require("react"));
+const react_dom_1 = __importDefault(require("react-dom"));
 require("./index.css");
-var App = (0, react_1.lazy)(function () { return Promise.resolve().then(function () { return __importStar(require("./App")); }); });
-react_dom_1["default"].hydrate(react_1["default"].createElement(react_1.Suspense, { fallback: "Loading..." },
-    react_1["default"].createElement(App, null)), document.getElementById("root"));
+const App = (0, react_1.lazy)(() => Promise.resolve().then(() => __importStar(require("./App"))));
+react_dom_1.default.hydrate(react_1.default.createElement(react_1.Suspense, { fallback: "Loading..." },
+    react_1.default.createElement(App, null)), document.getElementById("root"));
 //# sourceMappingURL=client.js.map

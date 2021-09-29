@@ -14,7 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Executives_GenerateColors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Executives/GenerateColors */ "./src/Executives/GenerateColors.tsx");
 /* harmony import */ var _Executives_CalculateBoxSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Executives/CalculateBoxSize */ "./src/Executives/CalculateBoxSize.tsx");
+/* harmony import */ var _Executives_SortColorArray__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Executives/SortColorArray */ "./src/Executives/SortColorArray.tsx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 
 
 
@@ -23,6 +25,7 @@ const ColorBox = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => 
 
 function App() {
   const [colors, setColors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [sortedColors, setSortedColors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [canvasSize, setCanvasSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     width: 0,
     height: 0
@@ -32,6 +35,7 @@ function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setColors((0,_Executives_GenerateColors__WEBPACK_IMPORTED_MODULE_1__.generateColors)());
+    if (colors) setSortedColors((0,_Executives_SortColorArray__WEBPACK_IMPORTED_MODULE_3__.sortColorsArray)(colors));
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     let canvasWidth = 0;
@@ -52,7 +56,7 @@ function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container",
     ref: containerQuery
-  }, canvasSize.width && (colors === null || colors === void 0 ? void 0 : colors.map((color, index) => {
+  }, canvasSize.width && (sortedColors === null || sortedColors === void 0 ? void 0 : sortedColors.map((color, index) => {
     const props = { ...color,
       ...canvasSize
     };
@@ -108,10 +112,12 @@ const generateColors = () => {
   for (let r = 0; r < 255; r += increment) {
     for (let g = 0; g < 255; g += increment) {
       for (let b = 0; b < 255; b += increment) {
+        const average = (r + g + b) / 3;
         const color = {
           red: Math.round(r),
           green: Math.round(g),
-          blue: Math.round(b)
+          blue: Math.round(b),
+          average: average
         };
         colors.push(color);
       }
@@ -119,6 +125,23 @@ const generateColors = () => {
   }
 
   return colors;
+};
+
+/***/ }),
+
+/***/ "./src/Executives/SortColorArray.tsx":
+/*!*******************************************!*\
+  !*** ./src/Executives/SortColorArray.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sortColorsArray": () => (/* binding */ sortColorsArray)
+/* harmony export */ });
+const sortColorsArray = colors => {
+  const sortedData = colors.sort((a, b) => a.average - b.average);
+  return sortedData;
 };
 
 /***/ })
