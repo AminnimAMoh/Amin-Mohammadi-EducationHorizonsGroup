@@ -21,7 +21,7 @@ body {
   position: relative;
 }
 
-.container> div{
+.container > .container_colorBox {
   position: absolute;
   top: 50%;
   left: 50%;

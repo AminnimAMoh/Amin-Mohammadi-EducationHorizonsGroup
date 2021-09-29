@@ -351,12 +351,13 @@ const ColorBox = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => 
 function App() {
   const [colors, setColors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [sortedColors, setSortedColors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [variant, setVariant] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("spiral");
   const [canvasSize, setCanvasSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     width: 0,
     height: 0
   });
   const containerQuery = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null); // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
-  // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
+  // So it will be 2c*2c=4c and to fit 6 boxes in this canvas you have to 4/6=0.666. So the width and height for perfect rectangles will be 0.666/2.
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setColors((0,_Executives_GenerateColors__WEBPACK_IMPORTED_MODULE_1__.generateColors)());
@@ -386,12 +387,17 @@ function App() {
   }, canvasSize.width && (sortedColors === null || sortedColors === void 0 ? void 0 : sortedColors.map((color, index) => {
     const props = { ...color,
       ...canvasSize,
-      index
+      index,
+      variant
     };
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ColorBox, _extends({
       key: index
     }, props));
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Spiral Shape"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Color Grid"));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    onClick: () => setVariant(correntState => {
+      return correntState === "spiral" ? "grid" : "spiral";
+    })
+  }, "Spiral Shape"));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -470,8 +476,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "sortColorsArray": () => (/* binding */ sortColorsArray)
 /* harmony export */ });
-// Sorting the colors array using the average of the red, gree, blue of the color,
-// from big to small.
+// Sorting the colours array using the average of the red, gree, blue of the colour,
+// from big to small (dark to bright).
 const sortColorsArray = colors => {
   const sortedData = colors.sort((a, b) => a.average - b.average);
   return sortedData;
