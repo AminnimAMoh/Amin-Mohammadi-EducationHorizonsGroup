@@ -1,9 +1,9 @@
 const expect = require("chai").expect;
-const GenerateColor = require("../JSsrc/Executives/GenerateColors").generateColors;
+const ColourGenerator = require("../JSsrc/Executives/GenerateColours").ColourGenerator;
 
-describe("Generate Color", () => {
-  const testObject = GenerateColor();
-  it("Should correctly report return array length is 32768 from generateColor class constructor function.", () => {
+describe("Generate Colour", () => {
+  const testObject = new ColourGenerator().generateColours();
+  it("Should correctly report return array length is 32768 from generateColour class constructor function.", () => {
     expect(testObject.length).to.be.equal(32768);
   });
   it("Should correctly report return array second object blue value is 8", () => {
@@ -22,7 +22,55 @@ describe("Generate Color", () => {
   });
   it("Should correctly report return array last blue key value is NOT 265 as it is out of scope", () => {
     const blues = testObject[32];
-    //As the colors are between 0-255 the for loop will reset reaching 256.
+    //As the colours are between 0-255 the for loop will reset reaching 256.
     expect(blues).to.not.be.equal(0);
   });
+});
+
+describe("Sort Colours", () => {
+  const testObject = new ColourGenerator();
+  const args = [
+    {
+      red: 8,
+      green: 32,
+      blue: 0,
+      average: 13.33,
+    },
+    {
+      red: 0,
+      green: 128,
+      blue: 16,
+      average: 48,
+    },
+    {
+      red: 16,
+      green: 0,
+      blue: 128,
+      average: 48,
+    },
+  ];
+
+  it("Should correctly report function return a sorted array described in responce.", () => {
+    const responce = [
+      {
+        red: 0,
+        green: 128,
+        blue: 16,
+        average: 48,
+      },
+      {
+        red: 16,
+        green: 0,
+        blue: 128,
+        average: 48,
+      },
+      {
+        red: 8,
+        green: 32,
+        blue: 0,
+        average: 13.33,
+      },
+    ];
+    expect(testObject.sortColours(args)).to.have.deep.members(responce);
+  })
 });

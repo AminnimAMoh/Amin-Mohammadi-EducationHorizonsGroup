@@ -20,25 +20,27 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const GenerateColors_1 = require("./Executives/GenerateColors");
+const GenerateColours_1 = require("./Executives/GenerateColours");
 const CalculateBoxSize_1 = require("./Executives/CalculateBoxSize");
-const ColorBox = (0, react_1.lazy)(() => Promise.resolve().then(() => __importStar(require("./Shared-Components/ColorBox"))));
+const ColourBox = (0, react_1.lazy)(() => Promise.resolve().then(() => __importStar(require("./Shared-Components/ColourBox"))));
 function App() {
-    const [colors, setColors] = (0, react_1.useState)(null);
+    const [colours, setColours] = (0, react_1.useState)(null);
     const [canvasSize, setCanvasSize] = (0, react_1.useState)({
         width: 0,
         height: 0,
     });
     const containerQuery = (0, react_1.useRef)(null);
-    // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
-    // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
+    //Using useEffect hook I am calling a function to generate the colours and return them in an array;
+    //useEffect helps to run this function just once the first paint happens.
     (0, react_1.useEffect)(() => {
-        setColors((0, GenerateColors_1.generateColors)());
+        setColours(new GenerateColours_1.ColourGenerator().run());
     }, []);
+    // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
+    // So it will be 2c*2c=4c and to fit 6 boxes in this canvas you have to 4/6=0.666. So the width and height for perfect rectangles will be 0.666/2.
     (0, react_1.useEffect)(() => {
         let canvasWidth = 0;
         let canvasHeight = 0;
-        if (colors && containerQuery.current) {
+        if (colours && containerQuery.current) {
             canvasWidth = containerQuery.current.clientWidth;
             canvasHeight = containerQuery.current.clientHeight;
         }
@@ -49,10 +51,13 @@ function App() {
         };
         setCanvasSize((0, CalculateBoxSize_1.calculateBoxSize)(args));
     }, [containerQuery.current]);
-    return (react_1.default.createElement("div", { className: "container", ref: containerQuery }, canvasSize.width && (colors === null || colors === void 0 ? void 0 : colors.map((color, index) => {
-        const props = Object.assign(Object.assign({}, color), canvasSize);
-        return react_1.default.createElement(ColorBox, Object.assign({ key: index }, props));
-    }))));
+    return (react_1.default.createElement("div", { className: "container", ref: containerQuery }, canvasSize.width &&
+        (colours === null || colours === void 0 ? void 0 : colours.map((colour, index) => {
+            //Adding all props required by the Colourbox component in one object using Spread Attributes.
+            //Spread Attributes is easier to read bypassing all props and their key names in a very short format.
+            const props = Object.assign(Object.assign(Object.assign({}, colour), canvasSize), { index });
+            return react_1.default.createElement(ColourBox, Object.assign({ key: index }, props));
+        }))));
 }
 exports.default = App;
 //# sourceMappingURL=App.js.map

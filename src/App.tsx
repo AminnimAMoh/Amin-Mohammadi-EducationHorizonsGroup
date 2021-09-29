@@ -1,10 +1,9 @@
 import React, { useEffect, useState, lazy, useRef } from "react";
-import { Color } from "./Types/GeneralTypes";
-import { generateColors } from "./Executives/GenerateColors";
+import { Colour } from "./Types/GeneralTypes";
+import { ColourGenerator } from "./Executives/GenerateColours";
 import { calculateBoxSize } from "./Executives/CalculateBoxSize";
-import { sortColorsArray } from "./Executives/SortColorArray";
 
-const ColorBox = lazy(() => import("./Shared-Components/ColorBox"));
+const ColourBox = lazy(() => import("./Shared-Components/ColourBox"));
 
 interface CanvasDimantions {
   width: number;
@@ -12,29 +11,25 @@ interface CanvasDimantions {
 }
 
 function App(): React.ReactElement {
-  const [colors, setColors] = useState<Color[] | null>(null);
-  const [sortedColors, setSortedColors] = useState<Color[] | null>(null);
-  const [variant, setVariant] = useState<string>("spiral");
+  const [colours, setColours] = useState<Colour[] | null>(null);
   const [canvasSize, setCanvasSize] = useState<CanvasDimantions>({
     width: 0,
     height: 0,
   });
   const containerQuery = useRef<HTMLDivElement>(null);
 
+  //Using useEffect hook I am calling a function to generate the colours and return them in an array;
+  //useEffect helps to run this function just once the first paint happens.
+  useEffect(() => {
+    setColours(new ColourGenerator().run());
+  }, []);
+
   // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
   // So it will be 2c*2c=4c and to fit 6 boxes in this canvas you have to 4/6=0.666. So the width and height for perfect rectangles will be 0.666/2.
   useEffect(() => {
-    setColors(generateColors());
-  }, []);
-
-  useEffect(() => {
-    if (colors) setSortedColors(sortColorsArray(colors));
-  }, [colors]);
-
-  useEffect(() => {
     let canvasWidth: number = 0;
     let canvasHeight: number = 0;
-    if (colors && containerQuery.current) {
+    if (colours && containerQuery.current) {
       canvasWidth = containerQuery.current.clientWidth;
       canvasHeight = containerQuery.current.clientHeight;
     }
@@ -50,19 +45,10 @@ function App(): React.ReactElement {
   return (
     <div className="container" ref={containerQuery}>
       {canvasSize.width &&
-        sortedColors?.map((color: Color, index) => {
-          const props = { ...color, ...canvasSize, index, variant };
-          return <ColorBox key={index} {...props} />;
+        colours?.map((colour: Colour, index) => {
+          const props = { ...colour, ...canvasSize, index };
+          return <ColourBox key={index} {...props} />;
         })}
-      <button
-        onClick={() =>
-          setVariant((correntState) => {
-            return correntState === "spiral" ? "grid" : "spiral";
-          })
-        }
-      >
-        Spiral Shape
-      </button>
     </div>
   );
 }

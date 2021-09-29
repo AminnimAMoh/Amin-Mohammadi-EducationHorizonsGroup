@@ -25,4 +25,4 @@ function ColorBox({ red, green, blue, width, height, index, }) {
         } }));
 }
 exports.default = ColorBox;
-//# sourceMappingURL=ColorBox.js.map
+//# sourceMappingURL=ColourBox.js.map

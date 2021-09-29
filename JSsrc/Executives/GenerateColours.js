@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ColorGenerator = void 0;
-class ColorGenerator {
+exports.ColourGenerator = void 0;
+class ColourGenerator {
     constructor() {
         this.colors = [];
         this.run = () => {
-            return this.sortColors();
+            return this.sortColours();
         };
         this.generateColours = () => {
             const increment = Math.round(255 / 32);
@@ -25,12 +25,12 @@ class ColorGenerator {
             }
             return this.colors;
         };
-        this.sortColors = (args = null) => {
+        this.sortColours = (args = null) => {
             const colorsGenerated = args ? args : this.generateColours();
             this.colors = colorsGenerated.sort((a, b) => a.average - b.average);
             return this.colors;
         };
     }
 }
-exports.ColorGenerator = ColorGenerator;
-//# sourceMappingURL=GenerateColors.js.map
+exports.ColourGenerator = ColourGenerator;
+//# sourceMappingURL=GenerateColours.js.map
