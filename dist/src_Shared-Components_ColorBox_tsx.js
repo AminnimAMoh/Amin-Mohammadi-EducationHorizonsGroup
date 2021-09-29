@@ -21,15 +21,20 @@ function ColorBox({
   green,
   blue,
   width,
-  height
+  height,
+  index
 }) {
-  // console.log(width, height);
+  const angle = 2 * Math.PI / 32768 * index;
+  const radius = 50 * Math.cos(index);
+  const x = radius * Math.cos(angle);
+  const y = radius * Math.sin(angle);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "container_colorBox",
     style: {
       backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)`,
-      width: `${width}%`,
-      height: `${height}%`
+      transform: `translate(${x * 50}%,${y * 50}%)`,
+      width: `${width * 2}%`,
+      height: `${height * 2}%`
     }
   });
 }

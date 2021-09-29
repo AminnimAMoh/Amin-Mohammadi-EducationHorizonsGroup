@@ -385,7 +385,8 @@ function App() {
     ref: containerQuery
   }, canvasSize.width && (sortedColors === null || sortedColors === void 0 ? void 0 : sortedColors.map((color, index) => {
     const props = { ...color,
-      ...canvasSize
+      ...canvasSize,
+      index
     };
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ColorBox, _extends({
       key: index

@@ -50,7 +50,7 @@ function App(): React.ReactElement {
     <div className="container" ref={containerQuery}>
       {canvasSize.width && (
       sortedColors?.map((color: Color, index) => {
-        const props = { ...color, ...canvasSize };
+        const props = { ...color, ...canvasSize, index };
         return <ColorBox key={index} {...props} />;
       }))}
     </div>
