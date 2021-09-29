@@ -360,8 +360,10 @@ function App() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setColors((0,_Executives_GenerateColors__WEBPACK_IMPORTED_MODULE_1__.generateColors)());
-    if (colors) setSortedColors((0,_Executives_SortColorArray__WEBPACK_IMPORTED_MODULE_3__.sortColorsArray)(colors));
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (colors) setSortedColors((0,_Executives_SortColorArray__WEBPACK_IMPORTED_MODULE_3__.sortColorsArray)(colors));
+  }, [colors]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     let canvasWidth = 0;
     let canvasHeight = 0;

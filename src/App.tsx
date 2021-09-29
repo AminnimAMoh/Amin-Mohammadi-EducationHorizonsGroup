@@ -24,8 +24,11 @@ function App(): React.ReactElement {
   // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
   useEffect(() => {
     setColors(generateColors());
-    if(colors) setSortedColors(sortColorsArray(colors))
   }, []);
+
+  useEffect(()=>{
+    if(colors) setSortedColors(sortColorsArray(colors))
+  }, [colors])
 
   useEffect(() => {
     let canvasWidth: number = 0;
