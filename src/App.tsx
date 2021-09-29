@@ -53,6 +53,8 @@ function App(): React.ReactElement {
         const props = { ...color, ...canvasSize, index };
         return <ColorBox key={index} {...props} />;
       }))}
+          <button>Spiral Shape</button>
+    <button>Color Grid</button>
     </div>
   );
 }

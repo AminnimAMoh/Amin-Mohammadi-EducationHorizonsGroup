@@ -391,7 +391,7 @@ function App() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ColorBox, _extends({
       key: index
     }, props));
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Spiral Shape"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", null, "Color Grid"));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -470,6 +470,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "sortColorsArray": () => (/* binding */ sortColorsArray)
 /* harmony export */ });
+// Sorting the colors array using the average of the red, gree, blue of the color,
+// from big to small.
 const sortColorsArray = colors => {
   const sortedData = colors.sort((a, b) => a.average - b.average);
   return sortedData;
