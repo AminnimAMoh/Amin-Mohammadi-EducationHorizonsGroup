@@ -3,6 +3,7 @@ import { Colour } from "./Types/GeneralTypes";
 import { ColourGenerator } from "./Executives/GenerateColours";
 import { calculateBoxSize } from "./Executives/CalculateBoxSize";
 
+//Lazy loading to separate the weight of the build bundle.
 const ColourBox = lazy(() => import("./Shared-Components/ColourBox"));
 
 interface CanvasDimantions {
@@ -18,9 +19,10 @@ function App(): React.ReactElement {
   });
   const containerQuery = useRef<HTMLDivElement>(null);
 
-  //Using useEffect hook I am calling a function to generate the colours and return them in an array;
-  //useEffect helps to run this function just once the first paint happens.
+  //Using useEffect hook I am calling a class to generate the colours and return them in a sorted array;
+  //useEffect helps to generate this class just once the first paint happens.
   useEffect(() => {
+    //Run functions handle the callback chain.
     setColours(new ColourGenerator().run());
   }, []);
 

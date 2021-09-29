@@ -9,10 +9,15 @@ export class ColourGenerator{
     return this.sortColours();
   }
   generateColours=()=>{
+    //This nested loop is my solution to avoid duplication in the array.
+    //Because for each iteration at list one value will change we can make sure there will not be any duplications
+    //in the array.
+    //Considering that this nested loop just runs at the first page I think the time complexity is forgivable.
     const increment = Math.round(255 / 32);
     for (let r = 0; r < 255; r += increment) {
       for (let g = 0; g < 255; g += increment) {
         for (let b = 0; b < 255; b += increment) {
+          //Calculating the average of the colour generated for soring.
           const average = (r + g + b) / 3;
           const color = {
             red: Math.round(r),
