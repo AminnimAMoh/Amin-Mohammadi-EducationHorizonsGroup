@@ -29,7 +29,7 @@ function ColorBox({
   //that will return a number between -1 and 1. Then this number is multiplied by the desired radius of the circle.
   //This equation will form a Fibonacci sequence for the radius of the circle.
 
-  const radius = 300 * Math.sin(index); //Next two lines I am calculating the exact position of the coloured element around a circle using a Parametric Equation.
+  const radius = 450 * Math.sin(index); //Next two lines I am calculating the exact position of the coloured element around a circle using a Parametric Equation.
   //As I have a dynamic radius in the Fibonacci sequence the spiral shape will form.
 
   const x = radius * Math.cos(angle);
