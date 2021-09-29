@@ -21,20 +21,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const GenerateColor = require("../JSsrc/ColorGenerator").ColorGenerator;
+const ColorBox = (0, react_1.lazy)(() => Promise.resolve().then(() => __importStar(require("./Shared-Components/ColorBox"))));
 function App() {
-    const [colors, setColors] = (0, react_1.useState)(null), l;
+    const [colors, setColors] = (0, react_1.useState)(null);
+    const [canvasSize, setCanvasSize] = (0, react_1.useState)({ width: 0, height: 0 });
+    const containerQuery = (0, react_1.useRef)(null);
     const args = {
         dimensions: {
             width: 1920,
             height: 933,
         },
     };
+    // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
+    // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
     (0, react_1.useEffect)(() => {
         setColors(new GenerateColor(args).constructColor());
-    });
-    console.log(test);
-    return (react_1.default.createElement("div", null, colors.map(({ red, blue, green }) => {
-        react_1.default.createElement("div", { style: { backgroundColor: `rgba(${red}, ${green},${blue}, 1)` } });
+    }, []);
+    return (react_1.default.createElement("div", { className: "container", ref: containerQuery }, colors === null || colors === void 0 ? void 0 : colors.map((color, index) => {
+        const props = Object.assign(Object.assign({}, color), canvasSize);
+        return react_1.default.createElement(ColorBox, Object.assign({ key: index }, props));
     })));
 }
 exports.default = App;
