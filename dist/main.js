@@ -374,33 +374,49 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
-const GenerateColor = __webpack_require__(/*! ../JSsrc/ColorGenerator */ "./JSsrc/ColorGenerator.js").ColorGenerator; // const ColorBox=lazy(()=>import("./Shared-Components/ColorBox"))
 
+const GenerateColor = __webpack_require__(/*! ../JSsrc/ColorGenerator */ "./JSsrc/ColorGenerator.js").ColorGenerator;
+
+const ColorBox = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/*! import() */ "src_Shared-Components_ColorBox_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Shared-Components/ColorBox */ "./src/Shared-Components/ColorBox.tsx")));
 
 function App() {
   const [colors, setColors] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [canvasSize, setCanvasSize] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    width: 0,
+    height: 0
+  });
+  const containerQuery = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const args = {
     dimensions: {
       width: 1920,
       height: 933
     }
-  };
+  }; // To correctly calculate the size of each box you have to first calculate the surfacer of the canvas then divide it by the number of boxes.
+  // So it will be 2c*2c=4c and to fit 6 box in this canvas you have to 4/6=0.666. So the width and height for a perfect rect will be 0.666/2.
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setColors(new GenerateColor(args).constructColor());
   }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    console.log(colors === null || colors === void 0 ? void 0 : colors.length);
+    containerQuery.current && colors && colors.length && setCanvasSize({
+      width: containerQuery.current.offsetWidth / colors.length / 2,
+      height: containerQuery.current.offsetHeight / colors.length / 2
+    });
+  }, [containerQuery.current, colors]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "container"
+    className: "container",
+    ref: containerQuery
   }, colors === null || colors === void 0 ? void 0 : colors.map((color, index) => {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
-      key: index,
-      className: "container_colorBox",
-      style: {
-        backgroundColor: `rgba(${color.red}, ${color.green}, ${color.blue}, 1)`
-      }
-    }); // return <ColorBox key={index} {...colors}/>
-    // return <div key={index} style={{backgroundColor: `rgba(${color.red}, ${color.green}, ${color.blue}, 1)`}} />
+    const props = { ...color,
+      ...canvasSize
+    };
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ColorBox, _extends({
+      key: index
+    }, props));
   }));
 }
 
@@ -27297,6 +27313,9 @@ module.exports = JSON.parse('{"100":"Continue","101":"Switching Protocols","102"
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -27319,6 +27338,28 @@ module.exports = JSON.parse('{"100":"Continue","101":"Switching Protocols","102"
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/ensure chunk */
+/******/ 	(() => {
+/******/ 		__webpack_require__.f = {};
+/******/ 		// This file contains only the entry chunk.
+/******/ 		// The chunk loading function for additional chunks
+/******/ 		__webpack_require__.e = (chunkId) => {
+/******/ 			return Promise.all(Object.keys(__webpack_require__.f).reduce((promises, key) => {
+/******/ 				__webpack_require__.f[key](chunkId, promises);
+/******/ 				return promises;
+/******/ 			}, []));
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/get javascript chunk filename */
+/******/ 	(() => {
+/******/ 		// This function allow to reference async chunks
+/******/ 		__webpack_require__.u = (chunkId) => {
+/******/ 			// return url for filenames based on template
+/******/ 			return "" + chunkId + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -27345,6 +27386,48 @@ module.exports = JSON.parse('{"100":"Continue","101":"Switching Protocols","102"
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/require chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded chunks
+/******/ 		// "1" means "loaded", otherwise not loaded yet
+/******/ 		var installedChunks = {
+/******/ 			"main": 1
+/******/ 		};
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		var installChunk = (chunk) => {
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids, runtime = chunk.runtime;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 				}
+/******/ 			}
+/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 1;
+/******/ 		
+/******/ 		};
+/******/ 		
+/******/ 		// require() chunk loading for javascript
+/******/ 		__webpack_require__.f.require = (chunkId, promises) => {
+/******/ 			// "1" is the signal for "already loaded"
+/******/ 			if(!installedChunks[chunkId]) {
+/******/ 				if(true) { // all chunks have JS
+/******/ 					installChunk(require("./" + __webpack_require__.u(chunkId)));
+/******/ 				} else installedChunks[chunkId] = 1;
+/******/ 			}
+/******/ 		};
+/******/ 		
+/******/ 		// no external install chunk
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
 /******/ 	})();
 /******/ 	
 /************************************************************************/

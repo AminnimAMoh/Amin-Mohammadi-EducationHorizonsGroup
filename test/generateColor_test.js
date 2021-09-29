@@ -1,5 +1,6 @@
 const expect = require("chai").expect;
 const GenerateColor = require("../JSsrc/ColorGenerator").ColorGenerator;
+const calculateCellSize= require("../JSsrc/calculateBoxSize").calculateBoxSize;
 const args = {
   dimensions: {
     width: 1920,
@@ -32,12 +33,6 @@ describe("GenerateColor>constructColor", () => {
   });
 });
 
-describe("GenerateColor>constructColor", () => {
-  const testObject = new GenerateColor(args).calculateCellSize();
-  it("Should correctly report return is expected cell size=1920x933 from generateColor class.", () => {
-    expect(testObject).to.be.equal("size=1920x933");
-  });
-  it("Should correctly report return is not expected cell size=192x933 from generateColor class.", () => {
-    expect(testObject).to.not.be.equal("size=192x933");
-  });
+describe("Calculate Box Size", () => {
+
 });
