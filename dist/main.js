@@ -418,8 +418,7 @@ function App() {
       cellNumber: 32768
     };
     setCanvasSize(calculateBoxSize(args));
-  }, [containerQuery.current]); // console.log(canvasSize);c
-
+  }, [containerQuery.current]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container",
     ref: containerQuery
