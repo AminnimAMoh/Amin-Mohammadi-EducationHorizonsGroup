@@ -21,13 +21,13 @@ function ColorBox({
   width,
   height
 }) {
-  console.log(width, height);
+  // console.log(width, height);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "container_colorBox",
     style: {
       backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)`,
-      width: `${width}px`,
-      height: `${height}px`
+      width: `${width}%`,
+      height: `${height}%`
     }
   });
 }

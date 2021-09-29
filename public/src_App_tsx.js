@@ -93,7 +93,7 @@ function App() {
       cellNumber: 32768
     };
     setCanvasSize(calculateBoxSize(args));
-  }, [containerQuery.current]); // console.log(canvasSize);
+  }, [containerQuery.current]); // console.log(canvasSize);c
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container",
@@ -126,8 +126,8 @@ const calculateBoxSize = ({
   const w = width / cellNumber / 2;
   const h = height / cellNumber / 2;
   return {
-    width: w,
-    height: h
+    width: w * 100,
+    height: h * 100
   };
 };
 

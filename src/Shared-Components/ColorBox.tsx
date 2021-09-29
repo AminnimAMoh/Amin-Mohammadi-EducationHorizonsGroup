@@ -9,15 +9,14 @@ interface Props {
 }
 
 function ColorBox({ red, green, blue, width, height }: Props): ReactElement {
-  console.log(width, height);
-  
+  // console.log(width, height);
   return (
     <span
       className="container_colorBox"
       style={{
         backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)`,
-        width: `${width}px`,
-        height: `${height}px`,
+        width: `${width}%`,
+        height: `${height}%`,
       }}
     />
   );

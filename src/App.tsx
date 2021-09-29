@@ -46,7 +46,7 @@ function App(): React.ReactElement {
     };
     setCanvasSize(calculateBoxSize(args));
   }, [containerQuery.current]);
-  // console.log(canvasSize);
+  // console.log(canvasSize);c
   
   return (
     <div className="container" ref={containerQuery}>
