@@ -40,7 +40,7 @@ describe("Calculate Box Size", () => {
       height: 933,
       cellNumber: 32768
   };
-  it("Should correctly report function return is 0.058 for 1920px width", () => {
-    expect(calculateCellSize(args)).to.not.be.equal(0.058);
+  it("Should correctly report function return is 0.058 for 1920px width and 0.0284 for 933px height", () => {
+    expect(calculateCellSize(args)).to.not.be.equal({width: 0.058, height: 0.0284});
   });
 });
