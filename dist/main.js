@@ -380,6 +380,8 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 const GenerateColor = __webpack_require__(/*! ../JSsrc/ColorGenerator */ "./JSsrc/ColorGenerator.js").ColorGenerator;
 
+const calculateBoxSize = __webpack_require__(/*! ./Executives/CalculateBoxSize */ "./src/Executives/CalculateBoxSize.tsx").calculateBoxSize;
+
 const ColorBox = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.lazy)(() => __webpack_require__.e(/*! import() */ "src_Shared-Components_ColorBox_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ./Shared-Components/ColorBox */ "./src/Shared-Components/ColorBox.tsx")));
 
 function App() {
@@ -401,26 +403,60 @@ function App() {
     setColors(new GenerateColor(args).constructColor());
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    console.log(colors === null || colors === void 0 ? void 0 : colors.length);
-    containerQuery.current && colors && colors.length && setCanvasSize({
-      width: containerQuery.current.offsetWidth / colors.length / 2,
-      height: containerQuery.current.offsetHeight / colors.length / 2
-    });
-  }, [containerQuery.current, colors]);
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+
+    if (colors && containerQuery.current) {
+      canvasWidth = containerQuery.current.clientWidth;
+      canvasHeight = containerQuery.current.clientHeight;
+    }
+
+    console.log(canvasWidth, canvasHeight);
+    const args = {
+      width: canvasWidth,
+      height: canvasHeight,
+      cellNumber: 32768
+    };
+    setCanvasSize(calculateBoxSize(args));
+  }, [containerQuery.current]); // console.log(canvasSize);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container",
     ref: containerQuery
-  }, colors === null || colors === void 0 ? void 0 : colors.map((color, index) => {
+  }, canvasSize.width && (colors === null || colors === void 0 ? void 0 : colors.map((color, index) => {
     const props = { ...color,
       ...canvasSize
     };
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ColorBox, _extends({
       key: index
     }, props));
-  }));
+  })));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
+/***/ "./src/Executives/CalculateBoxSize.tsx":
+/*!*********************************************!*\
+  !*** ./src/Executives/CalculateBoxSize.tsx ***!
+  \*********************************************/
+/***/ ((module) => {
+
+const calculateBoxSize = ({
+  width,
+  height,
+  cellNumber
+}) => {
+  const w = width / cellNumber / 2;
+  const h = height / cellNumber / 2;
+  return {
+    width: w,
+    height: h
+  };
+};
+
+module.exports.calculateBoxSize = calculateBoxSize;
 
 /***/ }),
 
