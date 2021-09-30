@@ -10,8 +10,12 @@ Image Generator
 
 
 This program is developed in React.js, Node.js and TypeScript.
+
 Styled with Cascading Style Sheets (CSS). NO NEED FOR SCSS.
-Bundled with Babel and Webpack. devDependencies are available in package.json.
+
+Bundled with Babel and Webpack. devDependencies and public dependencies are available in package.json.
+
+- Browser support is limited by market share percentage and discontinued as not ie 11, not op_mini all to reduce the bundle size.
 
 To run this project you need Node.js version 14+ (Node.js 16.8.0 is preferred).
 Yarn version v1.22.10
