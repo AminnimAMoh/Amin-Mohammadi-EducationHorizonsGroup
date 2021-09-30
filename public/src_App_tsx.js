@@ -148,6 +148,9 @@ class ColourGenerator {
     });
 
     _defineProperty(this, "sortColours", (args = null) => {
+      //In line 38 I have formed this condition as I wanted to send a controlled array of colours 
+      //to this function and test it with a predicted response.
+      //So line 38 is condition-based for unit testing.
       const colorsGenerated = args ? args : this.generateColours();
       this.colors = colorsGenerated.sort((a, b) => a.average - b.average);
       return this.colors;

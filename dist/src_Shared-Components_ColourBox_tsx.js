@@ -34,13 +34,13 @@ function ColorBox({
   const radius = 450 * Math.sin(index); //Next two lines I am calculating the exact position of the coloured element around a circle using a Parametric Equation.
   //As I have a dynamic radius in the Fibonacci sequence the spiral shape will form.
 
-  const x = radius * Math.cos(angle);
-  const y = radius * Math.sin(angle);
+  const x = -50 + radius * Math.cos(angle) * 50;
+  const y = -50 + radius * Math.sin(angle) * 50;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "container_colorBox",
     style: {
       backgroundColor: `rgba(${red}, ${green}, ${blue}, 1)`,
-      transform: `translate(${-50 + x * 50}%,${-50 + y * 50}%)`,
+      transform: `translate(${x}%,${y}%)`,
       width: `${width / 5}%`,
       height: `${height / 5}%`
     }
