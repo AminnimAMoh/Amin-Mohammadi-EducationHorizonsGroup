@@ -1,6 +1,38 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/Shared-Components/Loading.tsx":
+/*!*******************************************!*\
+  !*** ./src/Shared-Components/Loading.tsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function Loading() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "Loading"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "Loading_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "Loading_container-elements"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "Loading_container-elements"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "Loading_container-elements"
+  })));
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Loading);
+
+/***/ }),
+
 /***/ "./node_modules/core-js/modules/_a-function.js":
 /*!*****************************************************!*\
   !*** ./node_modules/core-js/modules/_a-function.js ***!
@@ -1250,7 +1282,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  padding: 8px;\r\n  height: 100vh;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 720px;\r\n  height: 720px;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  align-items: flex-start;\r\n  flex-direction: row;\r\n  position: relative;\r\n}\r\n\r\n.container > .container_colorBox {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  border-radius: 50%;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,aAAa;AACf;;AAEA;EACE,cAAc;EACd,YAAY;EACZ,aAAa;EACb,aAAa;EACb,eAAe;EACf,6BAA6B;EAC7B,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,kBAAkB;AACpB","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  padding: 8px;\r\n  height: 100vh;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 720px;\r\n  height: 720px;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  align-items: flex-start;\r\n  flex-direction: row;\r\n  position: relative;\r\n}\r\n\r\n.container > .container_colorBox {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  border-radius: 50%;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n}\r\n\r\n.container {\r\n  padding: 8px;\r\n  margin: 0 auto;\r\n  width: 720px;\r\n  height: 720px;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  align-items: flex-start;\r\n  flex-direction: row;\r\n  position: relative;\r\n}\r\n\r\n.container > .container_colorBox {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  border-radius: 50%;\r\n}\r\n\r\n.Loading {\r\n  position: absolute;\r\n  z-index: 1;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(0, 0, 0, 0.5);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.Loading > .Loading_container {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  width: 50px;\r\n  height: 50px;\r\n}\r\n\r\n.Loading_container-elements {\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 50%;\r\n  background-color: white;\r\n  animation: loading 1s infinite;\r\n  -webkit-animation: loading 1s infinite;\r\n  -moz-animation: loading 1s infinite;\r\n  -ms-animation: loading 1s infinite;\r\n  -o-animation: loading 1s infinite;\r\n}\r\n\r\n@keyframes loading {\r\n  from {\r\n    transform: scale(0);\r\n  }\r\n  50% {\r\n    transform: scale(1.5);\r\n  }\r\n  to {\r\n    transform: scale(0);\r\n  }\r\n}\r\n\r\n@-webkit-keyframes loading {\r\n  from {\r\n    -webkit-transform: scale(0);\r\n  }\r\n  50% {\r\n    -webkit-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -webkit-transform: scale(0);\r\n  }\r\n}\r\n\r\n@-moz-keyframes loading {\r\n  from {\r\n    -moz-transform: scale(0);\r\n  }\r\n  50% {\r\n    -moz-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -moz-transform: scale(0);\r\n  }\r\n}\r\n\r\n@-ms-keyframes loading {\r\n  from {\r\n    -ms-transform: scale(0);\r\n  }\r\n  50% {\r\n    -ms-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -ms-transform: scale(0);\r\n  }\r\n}\r\n\r\n@-o-keyframes loading {\r\n  from {\r\n    -o-transform: scale(0);\r\n  }\r\n  50% {\r\n    -o-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -o-transform: scale(0);\r\n  }\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,YAAY;EACZ,cAAc;EACd,YAAY;EACZ,aAAa;EACb,aAAa;EACb,eAAe;EACf,6BAA6B;EAC7B,uBAAuB;EACvB,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,UAAU;EACV,WAAW;EACX,YAAY;EACZ,oCAAoC;EACpC,aAAa;EACb,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,8BAA8B;EAC9B,mBAAmB;EACnB,WAAW;EACX,YAAY;AACd;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,uBAAuB;EACvB,8BAA8B;EAC9B,sCAAsC;EACtC,mCAAmC;EACnC,kCAAkC;EAClC,iCAAiC;AACnC;;AAEA;EACE;IACE,mBAAmB;EACrB;EACA;IACE,qBAAqB;EACvB;EACA;IACE,mBAAmB;EACrB;AACF;;AAEA;EACE;IACE,2BAA2B;EAC7B;EACA;IACE,6BAA6B;EAC/B;EACA;IACE,2BAA2B;EAC7B;AACF;;AAEA;EACE;IACE,wBAAwB;EAC1B;EACA;IACE,0BAA0B;EAC5B;EACA;IACE,wBAAwB;EAC1B;AACF;;AAEA;EACE;IACE,uBAAuB;EACzB;EACA;IACE,yBAAyB;EAC3B;EACA;IACE,uBAAuB;EACzB;AACF;;AAEA;EACE;IACE,sBAAsB;EACxB;EACA;IACE,wBAAwB;EAC1B;EACA;IACE,sBAAsB;EACxB;AACF","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n}\r\n\r\n.container {\r\n  padding: 8px;\r\n  margin: 0 auto;\r\n  width: 720px;\r\n  height: 720px;\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  justify-content: space-around;\r\n  align-items: flex-start;\r\n  flex-direction: row;\r\n  position: relative;\r\n}\r\n\r\n.container > .container_colorBox {\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  border-radius: 50%;\r\n}\r\n\r\n.Loading {\r\n  position: absolute;\r\n  z-index: 1;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: rgba(0, 0, 0, 0.5);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.Loading > .Loading_container {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  width: 50px;\r\n  height: 50px;\r\n}\r\n\r\n.Loading_container-elements {\r\n  width: 10px;\r\n  height: 10px;\r\n  border-radius: 50%;\r\n  background-color: white;\r\n  animation: loading 1s infinite;\r\n  -webkit-animation: loading 1s infinite;\r\n  -moz-animation: loading 1s infinite;\r\n  -ms-animation: loading 1s infinite;\r\n  -o-animation: loading 1s infinite;\r\n}\r\n\r\n@keyframes loading {\r\n  from {\r\n    transform: scale(0);\r\n  }\r\n  50% {\r\n    transform: scale(1.5);\r\n  }\r\n  to {\r\n    transform: scale(0);\r\n  }\r\n}\r\n\r\n@-webkit-keyframes loading {\r\n  from {\r\n    -webkit-transform: scale(0);\r\n  }\r\n  50% {\r\n    -webkit-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -webkit-transform: scale(0);\r\n  }\r\n}\r\n\r\n@-moz-keyframes loading {\r\n  from {\r\n    -moz-transform: scale(0);\r\n  }\r\n  50% {\r\n    -moz-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -moz-transform: scale(0);\r\n  }\r\n}\r\n\r\n@-ms-keyframes loading {\r\n  from {\r\n    -ms-transform: scale(0);\r\n  }\r\n  50% {\r\n    -ms-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -ms-transform: scale(0);\r\n  }\r\n}\r\n\r\n@-o-keyframes loading {\r\n  from {\r\n    -o-transform: scale(0);\r\n  }\r\n  50% {\r\n    -o-transform: scale(1.5);\r\n  }\r\n  to {\r\n    -o-transform: scale(0);\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -31838,7 +31870,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_iterable_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.css */ "./src/index.css");
+/* harmony import */ var _Shared_Components_Loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Shared-Components/Loading */ "./src/Shared-Components/Loading.tsx");
+/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index.css */ "./src/index.css");
+
 
 
 
@@ -31847,7 +31881,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const App = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_3__.lazy)(() => __webpack_require__.e(/*! import() */ "src_App_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ./App */ "./src/App.tsx")));
 react_dom__WEBPACK_IMPORTED_MODULE_4__.hydrate( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(react__WEBPACK_IMPORTED_MODULE_3__.Suspense, {
-  fallback: "Loading..."
+  fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(_Shared_Components_Loading__WEBPACK_IMPORTED_MODULE_5__["default"], null)
 }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3__.createElement(App, null)), document.getElementById("root"));
 })();
 

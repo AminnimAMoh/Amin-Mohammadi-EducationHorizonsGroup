@@ -42,8 +42,5 @@ module.exports = [
       chunkFilename: "[name].js",
       publicPath: "/"
     },
-    // externals: [
-    //   nodeExternals(),
-    // ],
   },
 ];
