@@ -29,6 +29,7 @@ After cloning the project you can run the project by following steps:
 + (yarn build) command.
 3.1-Then after the build is finished you can start the local server using 
 + (yarn start) command.
+4-Open your browser and type http://localhost:3000/ in your browsers address line.
 
 @@ To run in development mode @@
 3-To build the development bundle please run:
@@ -36,6 +37,7 @@ After cloning the project you can run the project by following steps:
 
 3.1-Then after the build is finished you can start the local server using 
 + (yarn dev) command.
+4-Open your browser and type http://localhost:3000/ in your browsers address line.
 
 @@ To run unit testing @@
 - (No need to bundle the project)
